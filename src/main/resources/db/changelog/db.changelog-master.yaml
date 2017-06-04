@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: evgeny
+      comment: "Creating 'weather_records' table"
+      changes:
+        - createTable:
+            tableName: weather_records
+            columns:
+              - column:
+                  name: id
+                  type: int(11)
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: latitude
+                  type: float(9,6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: longitude
+                  type: float(9,6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: temperature
+                  type: decimal(3,1)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: condition
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: datetime
+                  type: datetime
+                  constraints:
+                    nullable: false
