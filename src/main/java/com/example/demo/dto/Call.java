@@ -77,5 +77,12 @@ public class Call {
 		this.datetime = datetime;
 	}
 
+	@Override
+	public String toString() {
+		return "Call [id=" + id + ", address=" + address + ", type=" + type + ", incidentNumber=" + incidentNumber
+				+ ", latitude=" + latitude + ", longitude=" + longitude + ", datetime=" + datetime + "]";
+	}
+
+	
     
 }
