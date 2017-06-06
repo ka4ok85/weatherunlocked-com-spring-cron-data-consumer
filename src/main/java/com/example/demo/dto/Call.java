@@ -55,9 +55,7 @@ public class Call {
 		return incidentNumber;
 	}
 
-
 	public void setIncidentNumber(String incidentNumber) {
-	
 		this.incidentNumber = incidentNumber;
 	}
 
@@ -91,6 +89,4 @@ public class Call {
 				+ ", latitude=" + latitude + ", longitude=" + longitude + ", datetime=" + datetime + "]";
 	}
 
-	
-    
 }
