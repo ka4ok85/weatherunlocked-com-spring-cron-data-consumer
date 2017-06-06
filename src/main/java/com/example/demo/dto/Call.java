@@ -2,6 +2,10 @@ package com.example.demo.dto;
 
 import java.time.LocalDateTime;
 
+import com.example.demo.dto.CustomLocalDateTimeDeserializer;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 public class Call {
 
     private Long id;
@@ -10,13 +14,15 @@ public class Call {
     
     private String type;
     
-    private String incidentNumber;
-    
     private float latitude;
     
     private float longitude;
     
+    @JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime datetime;
+
+	@JsonProperty(value = "incidentNumber")
+    private String incidentNumber;
 
 	public Call() {
 	}
@@ -49,7 +55,9 @@ public class Call {
 		return incidentNumber;
 	}
 
+
 	public void setIncidentNumber(String incidentNumber) {
+	
 		this.incidentNumber = incidentNumber;
 	}
 

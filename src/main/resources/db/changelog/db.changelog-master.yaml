@@ -39,3 +39,17 @@ databaseChangeLog:
                   type: datetime
                   constraints:
                     nullable: false
+  - changeSet:
+      id: 3
+      author: evgeny
+      comment: "Renaming 'condition' field"
+      changes:
+      - renameColumn:
+          columnDataType: varchar(255)
+          newColumnName: condition_description
+          oldColumnName: condition
+          tableName: weather_records
+
+
+
+                    

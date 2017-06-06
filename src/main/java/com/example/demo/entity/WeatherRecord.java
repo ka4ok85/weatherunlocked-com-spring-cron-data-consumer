@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-//import com.example.entity.CustomLocalDateTimeDeserializer;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name="weather_records")
@@ -32,9 +29,9 @@ public class WeatherRecord {
     private float temperature;
     
     @JsonProperty("wx_desc")
-    private String condition;
+    @Column(name = "condition_description")
+    private String conditionDescription;
     
-    //@JsonDeserialize(using = CustomLocalDateTimeDeserializer.class)
     private LocalDateTime datetime;
 
 	public WeatherRecord() {
@@ -74,12 +71,12 @@ public class WeatherRecord {
 		this.temperature = temperature;
 	}
 
-	public String getCondition() {
-		return condition;
+	public String getConditionDescription() {
+		return conditionDescription;
 	}
 
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setConditionDescription(String conditionDescription) {
+		this.conditionDescription = conditionDescription;
 	}
 
 	public LocalDateTime getDatetime() {
@@ -93,7 +90,7 @@ public class WeatherRecord {
 	@Override
 	public String toString() {
 		return "WeatherRecord [id=" + id + ", latitude=" + latitude + ", longitude=" + longitude + ", temperature="
-				+ temperature + ", condition=" + condition + ", datetime=" + datetime + "]";
+				+ temperature + ", conditionDescription=" + conditionDescription + ", datetime=" + datetime + "]";
 	}
 
 }
