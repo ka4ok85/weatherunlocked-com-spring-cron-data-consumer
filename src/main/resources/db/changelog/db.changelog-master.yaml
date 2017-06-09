@@ -49,7 +49,18 @@ databaseChangeLog:
           newColumnName: condition_description
           oldColumnName: condition
           tableName: weather_records
-
-
+  - changeSet:
+      id: 4
+      author: evgeny
+      comment: "Adding 'zip' field"
+      changes:
+      - addColumn:
+          columns:
+          - column:
+              name: zip
+              type: varchar(5)
+              constraints:
+                nullable: true
+          tableName: weather_records
 
                     
