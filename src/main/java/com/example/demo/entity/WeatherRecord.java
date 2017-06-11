@@ -34,6 +34,8 @@ public class WeatherRecord {
     
     private LocalDateTime datetime;
 
+    private String zip;
+        
 	public WeatherRecord() {
 		LocalDateTime datetime = LocalDateTime.now();
 		this.setDatetime(datetime);
@@ -87,10 +89,19 @@ public class WeatherRecord {
 		this.datetime = datetime;
 	}
 
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
 	@Override
 	public String toString() {
 		return "WeatherRecord [id=" + id + ", latitude=" + latitude + ", longitude=" + longitude + ", temperature="
-				+ temperature + ", conditionDescription=" + conditionDescription + ", datetime=" + datetime + "]";
+				+ temperature + ", conditionDescription=" + conditionDescription + ", datetime=" + datetime + ", zip="
+				+ zip + "]";
 	}
 
 }

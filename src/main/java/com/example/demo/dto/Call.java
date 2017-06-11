@@ -24,6 +24,9 @@ public class Call {
 	@JsonProperty(value = "incidentNumber")
     private String incidentNumber;
 
+
+    private String zip;
+	
 	public Call() {
 	}
 
@@ -83,10 +86,20 @@ public class Call {
 		this.datetime = datetime;
 	}
 
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
 	@Override
 	public String toString() {
-		return "Call [id=" + id + ", address=" + address + ", type=" + type + ", incidentNumber=" + incidentNumber
-				+ ", latitude=" + latitude + ", longitude=" + longitude + ", datetime=" + datetime + "]";
+		return "Call [id=" + id + ", address=" + address + ", type=" + type + ", latitude=" + latitude + ", longitude="
+				+ longitude + ", datetime=" + datetime + ", incidentNumber=" + incidentNumber + ", zip=" + zip + "]";
 	}
+
+	
 
 }
