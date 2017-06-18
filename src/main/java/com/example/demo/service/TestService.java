@@ -2,6 +2,8 @@ package com.example.demo.service;
 
 import java.time.LocalDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import com.example.demo.repository.WeatherRecordRepository;
 @Service
 public class TestService {
 
+	private static final Logger log = LoggerFactory.getLogger(TestService.class);
+	
 	@Value("${weatherunlocked.appId}")
 	private String appId;
 	
@@ -39,5 +43,9 @@ public class TestService {
     	weatherRecord.setZip(call.getZip());
 
 		weatherRecordRepository.save(weatherRecord);
+		
+		
+		log.info("Service: {}. Incident: {}. Fetched weatherRecord Object {}", "weatherunlocked-com-spring-cron-data-consumer", call.getIncidentNumber(), weatherRecord);
+		
 	}
 }

@@ -21,18 +21,8 @@ public class AMQPHandler {
     //@Transactional
     public void process(Call call) throws Exception {
       
-    	//double x = Math.random();
-    	System.out.println(call.toString());
-    	log.debug(call.toString());
-    	
+    	//log.info("Service: {}. Incident: {}. Fetched Call Object {}", "weatherunlocked-com-spring-cron-data-consumer", call.getIncidentNumber(), call);
     	testService.run(call);
     	
-    	
-    	//System.out.println(x);
-    	//if (x > 0.5) {
-    		//throw new Exception("test exception");
-    	//}
-    	
-    	//LOGGER.info("Handling work unit - id: {}, definition: {}", workUnit.getId(), workUnit.getDefinition());
     }
 }
