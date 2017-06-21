@@ -17,6 +17,9 @@ public class TestService {
 
 	private static final Logger log = LoggerFactory.getLogger(TestService.class);
 	
+    @Value("${service.name}")
+    private String serviceName;
+
 	@Value("${weatherunlocked.appId}")
 	private String appId;
 	
@@ -41,11 +44,9 @@ public class TestService {
     	weatherRecord.setLongitude(lon);
     	weatherRecord.setDatetime(dateTime);
     	weatherRecord.setZip(call.getZip());
-
 		weatherRecordRepository.save(weatherRecord);
 		
-		
-		log.info("Service: {}. Incident: {}. Fetched weatherRecord Object {}", "weatherunlocked-com-spring-cron-data-consumer", call.getIncidentNumber(), weatherRecord);
+		log.info("Service: {}. Incident: {}. Fetched weatherRecord Object {}", serviceName, call.getIncidentNumber(), weatherRecord);
 		
 	}
 }
