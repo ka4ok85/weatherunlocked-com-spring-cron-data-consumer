@@ -12,6 +12,8 @@ import com.example.demo.dto.Call;
 import com.example.demo.entity.WeatherRecord;
 import com.example.demo.repository.WeatherRecordRepository;
 
+import feign.FeignException;
+
 @Service
 public class TestService {
 
@@ -38,15 +40,18 @@ public class TestService {
 		float lon = call.getLongitude();
 		LocalDateTime dateTime = call.getDatetime();
     	
-		// call Weather Service
-    	WeatherRecord weatherRecord = weatherRecordResource.currentWeather(lat, lon, appId, appKey);
-    	weatherRecord.setLatitude(lat); // we want to keep 911 calls coordinates since weather coordinates are not so accurate
-    	weatherRecord.setLongitude(lon);
-    	weatherRecord.setDatetime(dateTime);
-    	weatherRecord.setZip(call.getZip());
-		weatherRecordRepository.save(weatherRecord);
-		
-		log.info("Service: {}. Incident: {}. Fetched weatherRecord Object {}", serviceName, call.getIncidentNumber(), weatherRecord);
-		
+		try {
+			// call Weather Service
+	    	WeatherRecord weatherRecord = weatherRecordResource.currentWeather(lat, lon, appId, appKey);
+	    	weatherRecord.setLatitude(lat); // we want to keep 911 calls coordinates since weather coordinates are not so accurate
+	    	weatherRecord.setLongitude(lon);
+	    	weatherRecord.setDatetime(dateTime);
+	    	weatherRecord.setZip(call.getZip());
+			weatherRecordRepository.save(weatherRecord);
+
+			log.info("Service: {}. Incident: {}. Fetched weatherRecord Object {}", serviceName, call.getIncidentNumber(), weatherRecord);
+	    } catch (FeignException e) {
+	    	log.error("Service: {}. Can not fetch data from: {}", serviceName, e.getMessage());
+		}
 	}
 }
