@@ -15,9 +15,9 @@ import com.example.demo.repository.WeatherRecordRepository;
 import feign.FeignException;
 
 @Service
-public class TestService {
+public class WeatherService {
 
-	private static final Logger log = LoggerFactory.getLogger(TestService.class);
+	private static final Logger log = LoggerFactory.getLogger(WeatherService.class);
 	
     @Value("${service.name}")
     private String serviceName;
