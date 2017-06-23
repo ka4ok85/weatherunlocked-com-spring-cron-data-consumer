@@ -62,5 +62,39 @@ databaseChangeLog:
               constraints:
                 nullable: true
           tableName: weather_records
-
-                    
+  - changeSet:
+      id: 5
+      author: evgeny
+      comment: "Adding 'incident_number' field, removing lat/lon fields"
+      changes:
+      - addColumn:
+          columns:
+          - column:
+              name: incident_number
+              type: varchar(20)
+              constraints:
+                nullable: false
+                unique: true
+          tableName: weather_records
+      - dropColumn:
+          columnName: latitude
+          tableName: weather_records
+      - dropColumn:
+          columnName: longitude
+          tableName: weather_records
+  - changeSet:
+      id: 6
+      author: evgeny
+      comment: "Changing 'temperature' field"
+      changes:
+      - dropColumn:
+          columnName: temperature
+          tableName: weather_records      
+      - addColumn:
+          columns:
+          - column:
+              name: temperature
+              type: decimal(3,1)
+              constraints:
+                nullable: true
+          tableName: weather_records
