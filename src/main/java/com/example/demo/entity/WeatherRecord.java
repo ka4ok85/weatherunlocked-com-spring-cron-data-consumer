@@ -19,11 +19,8 @@ public class WeatherRecord {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @JsonProperty("lat")
-    private float latitude;
-    
-    @JsonProperty("lon")
-    private float longitude;
+    @Column(name = "incident_number")
+    private String incidentNumber;
 
     @JsonProperty("temp_c")
     private float temperature;
@@ -49,20 +46,12 @@ public class WeatherRecord {
 		this.id = id;
 	}
 
-	public float getLatitude() {
-		return latitude;
+	public String getIncidentNumber() {
+		return incidentNumber;
 	}
 
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
-	}
-
-	public float getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(float longitude) {
-		this.longitude = longitude;
+	public void setIncidentNumber(String incidentNumber) {
+		this.incidentNumber = incidentNumber;
 	}
 
 	public float getTemperature() {
@@ -99,9 +88,8 @@ public class WeatherRecord {
 
 	@Override
 	public String toString() {
-		return "WeatherRecord [id=" + id + ", latitude=" + latitude + ", longitude=" + longitude + ", temperature="
-				+ temperature + ", conditionDescription=" + conditionDescription + ", datetime=" + datetime + ", zip="
-				+ zip + "]";
+		return "WeatherRecord [id=" + id + ", incidentNumber=" + incidentNumber + ", temperature=" + temperature
+				+ ", conditionDescription=" + conditionDescription + ", datetime=" + datetime + ", zip=" + zip + "]";
 	}
 
 }

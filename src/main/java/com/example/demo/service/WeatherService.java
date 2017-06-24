@@ -43,8 +43,7 @@ public class WeatherService {
 		try {
 			// call Weather Service
 	    	WeatherRecord weatherRecord = weatherRecordResource.currentWeather(lat, lon, appId, appKey);
-	    	weatherRecord.setLatitude(lat); // we want to keep 911 calls coordinates since weather coordinates are not so accurate
-	    	weatherRecord.setLongitude(lon);
+	    	weatherRecord.setIncidentNumber(call.getIncidentNumber());
 	    	weatherRecord.setDatetime(dateTime);
 	    	weatherRecord.setZip(call.getZip());
 			weatherRecordRepository.save(weatherRecord);

@@ -24,7 +24,6 @@ public class Call {
 	@JsonProperty(value = "incidentNumber")
     private String incidentNumber;
 
-
     private String zip;
 	
 	public Call() {
