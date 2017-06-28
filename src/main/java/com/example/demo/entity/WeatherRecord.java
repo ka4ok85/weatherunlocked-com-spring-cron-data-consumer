@@ -23,7 +23,8 @@ public class WeatherRecord {
     private String incidentNumber;
 
     @JsonProperty("temp_c")
-    private float temperature;
+    @Column(nullable = true)
+    private Float temperature;
     
     @JsonProperty("wx_desc")
     @Column(name = "condition_description")
@@ -54,11 +55,11 @@ public class WeatherRecord {
 		this.incidentNumber = incidentNumber;
 	}
 
-	public float getTemperature() {
+	public Float getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(float temperature) {
+	public void setTemperature(Float temperature) {
 		this.temperature = temperature;
 	}
 
