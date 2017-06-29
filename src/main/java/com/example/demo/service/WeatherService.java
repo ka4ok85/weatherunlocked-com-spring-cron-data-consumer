@@ -36,11 +36,18 @@ public class WeatherService {
 		float lat = call.getLatitude();
 		float lon = call.getLongitude();
 		LocalDateTime dateTime = call.getDatetime();
+		WeatherRecord weatherRecord;
 
-		WeatherRecord weatherRecord = hystrixWeatherService.getWeather(lat, lon, appId, appKey);
-		if (weatherRecord == null) {
-			log.error("Service: {}. Incident: {}. Can not fetch Weather data!", serviceName, call.getIncidentNumber());
+		if (call.getLatitude() == 0.0f && call.getLongitude() == 0.0f) {
+			log.warn("Service: {}. Incident: {}. Blank coordinates.", serviceName, call.getIncidentNumber());
 			weatherRecord = new WeatherRecord();
+		} else {
+
+			weatherRecord = hystrixWeatherService.getWeather(lat, lon, appId, appKey);
+			if (weatherRecord == null) {
+				log.error("Service: {}. Incident: {}. Can not fetch Weather data!", serviceName, call.getIncidentNumber());
+				weatherRecord = new WeatherRecord();
+			}
 		}
 
 		weatherRecord.setIncidentNumber(call.getIncidentNumber());
