@@ -56,7 +56,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+		<dependency>
+			<groupId>com.example</groupId>
+			<artifactId>spring-cloud-config-client-jwt</artifactId>
+			<version>0.0.1</version>
+			<scope>system</scope>
+			<systemPath>C:\java_dev\spring-cloud-config-client-jwt-0.0.1.jar</systemPath>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -107,6 +113,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
